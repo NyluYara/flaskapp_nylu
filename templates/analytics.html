@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analytics</title>
+</head>
+<body>
+    <h1>Link Analytics</h1>
+    <table>
+        <tr>
+            <th>Original URL</th>
+            <th>Shortened Link</th>
+            <th>Creation Date</th>
+            <th>Expiration Date</th>
+            <th>Visits</th>
+        </tr>
+        {% for link in links %}
+            <tr>
+                <td>{{ link.original_url }}</td>
+                <td><a href="{{ url_for('redirect_to_original', short_token=link.short_token) }}">Link</a></td>
+                <td>{{ link.creation_date }}</td>
+                <td>{{ link.expiration_date }}</td>
+                <td>{{ link.clicks }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Home</a>
+</body>
+</html>
